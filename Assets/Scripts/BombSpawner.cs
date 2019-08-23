@@ -20,7 +20,6 @@ public class BombSpawner : MonoBehaviour
         if (Input.GetButtonDown("Jump") && n_bombs > 0)
         {
             Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
-            Debug.Log(transform.position);
             Vector3 centerPosition = tilemap.GetCellCenterWorld(cellPosition);
             Instantiate(bomb, centerPosition, Quaternion.identity);
             n_bombs--;

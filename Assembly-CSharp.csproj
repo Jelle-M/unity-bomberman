@@ -55,6 +55,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bomb.cs" />
      <Compile Include="Assets\Scripts\BombSpawner.cs" />
+     <Compile Include="Assets\Scripts\Flame.cs" />
+     <Compile Include="Assets\Scripts\MapDestroyer.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/jelle/wd/unity/Bomberman/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

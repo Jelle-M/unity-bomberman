@@ -11,10 +11,13 @@ public class Bomb : MonoBehaviour
         countdown -= Time.deltaTime;
         if (countdown <= 0f)
         {
-            // explode
-            Debug.Log("Explode!");
+            FindObjectOfType<MapDestroyer>().Explode(transform.position); // TODO: Replace by Singleton 
             Destroy(gameObject);
         }
-        
+    }
+
+    public void Explode()
+    {
+        countdown = 0f;
     }
 }

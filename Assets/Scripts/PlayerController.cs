@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = movement[0];
         float vertical = movement[1];
-        Debug.LogFormat("H {0} V {1}", horizontal, vertical);
-        animator.SetFloat("speed", horizontal*horizontal + vertical*vertical);
+        animator.SetFloat("speed", movement.magnitude); // magnitude is slow
         if (horizontal < 0)
         {
             animator.SetInteger("direction", 2);
@@ -48,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (vertical > 0)
         {
-            animator.SetInteger("direction", 16);
+            animator.SetInteger("direction", 1);
         }
         else
         {
