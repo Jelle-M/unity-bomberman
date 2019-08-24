@@ -164,9 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 315508064}
-  wallTile: {fileID: 11400000, guid: 27e8b5173bdd6e54aa251c5b210e1ad3, type: 2}
+  indestructibleTile: {fileID: 11400000, guid: 27e8b5173bdd6e54aa251c5b210e1ad3, type: 2}
   destructibleTile: {fileID: 11400000, guid: 58e50836c54486f41905be21427d08ce, type: 2}
   flame: {fileID: 3673288653893866813, guid: ef4509c9c0516a241b8e81152470e223, type: 3}
+  timeFlame: 3
+  delayExplosions: 0.5
 --- !u!1 &224570808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4324,7 +4326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1623711859}
-  speed: 1
+  speedIncrease: 0.3
+  bombSpawner: {fileID: 1623711864}
 --- !u!50 &1623711863
 Rigidbody2D:
   serializedVersion: 4
@@ -4360,6 +4363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 315508064}
   bomb: {fileID: 5197842347381727602, guid: 0b99a8581b4dc90429d3de99c6846a2e, type: 3}
+  bombRefreshTime: 3
 --- !u!58 &1623711865
 CircleCollider2D:
   m_ObjectHideFlags: 0

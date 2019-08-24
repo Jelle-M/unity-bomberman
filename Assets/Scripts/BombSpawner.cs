@@ -7,29 +7,32 @@ public class BombSpawner : MonoBehaviour
 {
     public Tilemap tilemap;
     public GameObject bomb;
-    private int n_bombs = 1;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int bombs = 1;
+    [SerializeField]
+    private float bombRefreshTime = 5f;
 
-    // Update is called once per frame
+
+
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && n_bombs > 0)
+        if (Input.GetButtonDown("Jump") && bombs > 0)
         {
             Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
             Vector3 centerPosition = tilemap.GetCellCenterWorld(cellPosition);
             Instantiate(bomb, centerPosition, Quaternion.identity);
-            n_bombs--;
-            Invoke("addBomb", 1); //RemoveLater
+            bombs--;
+            Invoke("addBomb", bombRefreshTime);
         }
         
     }
 
-    void addBomb()
+    public void incrementBomb()
     {
-        n_bombs++;
+        bombs++;
+    }
+
+    private void addBomb()
+    {
+        bombs++;
     }
 }

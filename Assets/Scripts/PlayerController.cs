@@ -6,6 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     [SerializeField]
+    public static int power = 1;
+    [SerializeField]
+    private float speedIncrease = 0.3f;
+    public BombSpawner bombSpawner;
+    public static int bombs;
     private float speed = 1;
     private Rigidbody2D rb2d;
     private Vector2 movement;
@@ -61,15 +66,22 @@ public class PlayerController : MonoBehaviour
         {
             case "BombPowerUp":
                 Debug.Log("BombPowerUp!");
+                Destroy(col.gameObject);
+                bombSpawner.incrementBomb();
                 break;
             case "SpeedPowerUp":
                 Debug.Log("SpeedPowerUp!");
+                Destroy(col.gameObject);
+                speed += speedIncrease;
                 break;
             case "ShieldPowerUp":
                 Debug.Log("ShieldPowerUp!");
+                Destroy(col.gameObject);
                 break;
             case "BlastPowerUp":
                 Debug.Log("BlastPowerUp!");
+                Destroy(col.gameObject);
+                power += 1;
                 break;
             case "DeadZone":
                 Debug.Log("DeadZone!");
