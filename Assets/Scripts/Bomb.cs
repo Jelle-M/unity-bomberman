@@ -23,8 +23,8 @@ public class Bomb : MonoBehaviour
          rb.detectCollisions = true;
      }
      void DisableRagdoll() {
-         rb.isKinematic = true;
-         rb.detectCollisions = false;
+//         rb.isKinematic = true;
+//         rb.detectCollisions = false;
      }
     void Update()
     {
@@ -43,11 +43,9 @@ public class Bomb : MonoBehaviour
 
    void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("COLLIDER TRIGGER");
         switch(col.gameObject.tag)
         {
             case "DeadZone":
-                Debug.Log("FIRE TRIGGERED");
                 Explode();
                 break;
             default:

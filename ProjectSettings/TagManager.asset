@@ -9,6 +9,7 @@ TagManager:
   - ShieldPowerUp
   - BlastPowerUp
   - DeadZone
+  - EndZone
   layers:
   - Default
   - TransparentFX

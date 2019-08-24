@@ -84,7 +84,10 @@ public class PlayerController : MonoBehaviour
                 power += 1;
                 break;
             case "DeadZone":
-                Debug.Log("DeadZone!");
+                Debug.Log("You lose!");
+                break;
+            case "EndZone":
+                Debug.Log("You win!");
                 break;
             default:
                 break;
