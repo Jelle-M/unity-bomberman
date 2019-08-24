@@ -15,6 +15,9 @@ public class BombSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.IsInputEnabled){
+            return;
+        }
         if (Input.GetButtonDown("Jump") && bombs > 0)
         {
             Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
@@ -23,7 +26,6 @@ public class BombSpawner : MonoBehaviour
             bombs--;
             Invoke("addBomb", bombRefreshTime);
         }
-        
     }
 
     public void incrementBomb()

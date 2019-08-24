@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public delegate void PlayerDelegate();
+    public static event PlayerDelegate OnPlayerDied;
+    public static event PlayerDelegate OnPlayerWon;
     public Animator animator;
     [SerializeField]
     public static int power = 1;
@@ -14,15 +17,45 @@ public class PlayerController : MonoBehaviour
     private float speed = 1;
     private Rigidbody2D rb2d;
     private Vector2 movement;
+
+    public PlayerController thePlayer;
+
+    void OnEnable() 
+    {
+        GameManager.OnGameStarted += StartGame;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnGameStarted -= StartGame;
+    }
+    void StartGame()
+    {
+        // Enable control
+        Time.timeScale = 1;
+    }
+
+    void StopGame()
+    {
+        // Freeze time
+        Time.timeScale = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        // Freeze time
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.IsInputEnabled)
+        {
+            return;
+        }
         movement = (new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))).normalized;
         setAnimator(movement);
     }
@@ -65,29 +98,27 @@ public class PlayerController : MonoBehaviour
         switch(col.gameObject.tag)
         {
             case "BombPowerUp":
-                Debug.Log("BombPowerUp!");
                 Destroy(col.gameObject);
                 bombSpawner.incrementBomb();
                 break;
             case "SpeedPowerUp":
-                Debug.Log("SpeedPowerUp!");
                 Destroy(col.gameObject);
                 speed += speedIncrease;
                 break;
             case "ShieldPowerUp":
-                Debug.Log("ShieldPowerUp!");
                 Destroy(col.gameObject);
                 break;
             case "BlastPowerUp":
-                Debug.Log("BlastPowerUp!");
                 Destroy(col.gameObject);
                 power += 1;
                 break;
             case "DeadZone":
-                Debug.Log("You lose!");
+                StopGame();
+                OnPlayerDied(); // event sent to game manager
                 break;
             case "EndZone":
-                Debug.Log("You win!");
+                StopGame();
+                OnPlayerWon(); // event sent to game manager
                 break;
             default:
                 break;
