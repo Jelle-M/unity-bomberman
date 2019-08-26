@@ -1,5 +1,5 @@
 # Bomberman
-latest viewable at :
+latest playable build at :
 https://jelle-m.github.io/unity-bomberman/.
 
 Uploaded at:
