@@ -1,6 +1,6 @@
 # Bomberman
 latest playable build at :
-https://jelle-m.github.io/unity-bomberman/.
+https://jellemeeus.github.io/unity-bomberman/.
 
 Uploaded at:
 https://simmer.io/@AnonJ/bomberbun
